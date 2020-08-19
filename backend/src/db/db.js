@@ -3,8 +3,7 @@ const assert=require('assert')
 const {mongoKey}=require('./credentials')
 
 MongoClient.connect(mongoKey,{ useUnifiedTopology: true },(error,client)=>{
-    // assert.equal(null, error);
+    assert.equal(null, error);
     console.log("Connected successfully to server");
-    console.log(error.message);
     console.log(client)
 })
