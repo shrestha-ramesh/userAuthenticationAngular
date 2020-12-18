@@ -21,11 +21,14 @@ app.post('/login',(request,response)=>{
         if(error){
             return response.status(500).send({error:'Server Error'})
         }
-        collection.findOne({email,password},(error,{email})=>{
+        collection.findOne({email,password},(error,result)=>{
             if(error){
                 return response.status(400).send({error:'Invalid Credentials'})
             }
-            return response.status(200).send({email})
+            if(result){
+                return response.status(200).send({message:"log in successful"})
+            }
+            response.status(400).send({error:'Invalid Credentials'})
         })
     })
 
